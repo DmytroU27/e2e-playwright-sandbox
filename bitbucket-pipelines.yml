@@ -1,0 +1,41 @@
+image: mcr.microsoft.com/playwright:v1.45.1-jammy
+
+pipelines:
+  custom:
+    test-pipeline:
+      - parallel:
+          - step:
+              script:
+                - npm ci
+                - npx playwright test --project Desktop-Chrome --shard=1/5
+              artifacts:
+                - blob-report/**
+          - step:
+              script:
+                - npm ci
+                - npx playwright test --project Desktop-Chrome --shard=2/5
+              artifacts:
+                - blob-report/**
+          - step:
+              script:
+                - npm ci
+                - npx playwright test --project Desktop-Chrome --shard=3/5
+              artifacts:
+                - blob-report/**
+          - step:
+              script:
+                - npm ci
+                - npx playwright test --project Desktop-Chrome --shard=4/5
+              artifacts:
+                - blob-report/**
+          - step:
+              script:
+                - npm ci
+                - npx playwright test --project Desktop-Chrome --shard=5/5
+              artifacts:
+                - blob-report/**
+      - step:
+          script:
+            - npx playwright merge-reports --reporter html ./blob-report
+          artifacts:
+            - playwright-report/**
