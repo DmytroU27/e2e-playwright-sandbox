@@ -1,20 +1,16 @@
-import { expect, Locator, Page } from "@playwright/test";
-import playwrightConfig from "../../playwright.config";
+import { expect, Locator, Page } from '@playwright/test';
+import playwrightConfig from '../../playwright.config';
 
 export abstract class PageHolder {
-  constructor(protected page: Page) {
-  }
+  constructor(protected page: Page) {}
 }
 
 export abstract class CoreActions extends PageHolder {
-  private errorMessage = this.page.locator(".invalid-message");
+  private errorMessage = this.page.locator('.invalid-message');
 
-  protected async selectDropdownElement(
-    locator: Locator,
-    text: string,
-  ): Promise<void> {
-    await locator.click()
-    await this.page.locator('.dropdown-menu').locator("button").getByText(text).click();
+  protected async selectDropdownElement(locator: Locator, text: string): Promise<void> {
+    await locator.click();
+    await this.page.locator('.dropdown-menu').locator('button').getByText(text).click();
   }
 
   protected async verifyElementIsVisible(locator: Locator): Promise<void> {
@@ -23,16 +19,12 @@ export abstract class CoreActions extends PageHolder {
 
   protected async verifyErrorMessages(errors: string[]): Promise<void> {
     for (const error of errors) {
-      await expect(
-        this.errorMessage.getByText(error, { exact: true }),
-      ).toBeVisible();
+      await expect(this.errorMessage.getByText(error, { exact: true })).toBeVisible();
     }
   }
 
   protected async verifyText(locator: Locator, text: string): Promise<void> {
-    await expect(locator, `No "${text}" in element "${locator}"!`).toHaveText(
-      text,
-    );
+    await expect(locator, `No "${text}" in element "${locator}"!`).toHaveText(text);
   }
 }
 

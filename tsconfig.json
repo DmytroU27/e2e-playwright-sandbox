@@ -9,11 +9,7 @@
     "module": "commonjs",
     "target": "es2018",
     "types": ["node"],
-    "typeRoots": ["./node_modules/@types", "./typings"],
-    "baseUrl": ".",
-    "paths": {
-      "string-format": ["typings/string-format"],
-      "pkijs": ["typings/pkijs"]
-    }
+    "typeRoots": ["./node_modules/@types"],
+    "baseUrl": "."
   }
 }

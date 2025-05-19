@@ -1,6 +1,5 @@
-import {BasePage} from "./base-page";
+import { BasePage } from './base-page';
 
 export class Dashboard extends BasePage {
-    public pagePath = "/dashboard";
-
+  public pagePath = '/dashboard';
 }

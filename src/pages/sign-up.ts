@@ -1,26 +1,18 @@
-import { AccountData } from "../models/account-data";
-import { SignUpProvider } from "../components/signup-provider.component";
-import { BasePage } from "./base-page";
+import { AccountData } from '../models/account-data';
+import { SignUpProvider } from '../components/signup-provider.component';
+import { BasePage } from './base-page';
 
 export class SignUp extends BasePage {
-  public pagePath = "/register";
+  public pagePath = '/register';
   public signUpProvider = new SignUpProvider(this.page);
 
-  private signUpForm = this.page.locator(".signup-form");
-  private emailInput = this.page
-    .getByRole("main")
-    .getByPlaceholder("Please Enter Your Email");
-  private firstNameInput = this.page.getByPlaceholder(
-    "Please Enter Your First Name",
-  );
-  private lastNameInput = this.page.getByPlaceholder(
-    "Please Enter Your Last Name",
-  );
-  private passwordInput = this.page.getByPlaceholder(
-    "Please Enter Your Password",
-  );
-  private subscribeCheckbox = this.page.locator(".checkbox label");
-  private signUpButton = this.page.getByRole("button", { name: "Sign Up" });
+  private signUpForm = this.page.locator('.signup-form');
+  private emailInput = this.page.getByRole('main').getByPlaceholder('Please Enter Your Email');
+  private firstNameInput = this.page.getByPlaceholder('Please Enter Your First Name');
+  private lastNameInput = this.page.getByPlaceholder('Please Enter Your Last Name');
+  private passwordInput = this.page.getByPlaceholder('Please Enter Your Password');
+  private subscribeCheckbox = this.page.locator('.checkbox label');
+  private signUpButton = this.page.getByRole('button', { name: 'Sign Up' });
 
   async verifySignFormIsVisible(): Promise<void> {
     await this.verifyElementIsVisible(this.signUpForm);

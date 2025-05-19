@@ -29,7 +29,27 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: process.env.CI ? [['blob'], ['list']] : [['html', { open: 'never' }], ['list']],
+  reporter: process.env.CI
+    ? [
+        ['blob'],
+        ['list'],
+        [
+          './node_modules/@testomatio/reporter/lib/adapter/playwright.js',
+          {
+            apiKey: process.env.TESTOMATIO,
+          },
+        ],
+      ]
+    : [
+        ['html', { open: 'never' }],
+        ['list'],
+        [
+          './node_modules/@testomatio/reporter/lib/adapter/playwright.js',
+          {
+            apiKey: process.env.TESTOMATIO,
+          },
+        ],
+      ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     headless: !!process.env.CI,

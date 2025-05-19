@@ -1,4 +1,4 @@
 export enum ToastType {
-    SUCCESS,
-    ERROR
+  SUCCESS,
+  ERROR,
 }

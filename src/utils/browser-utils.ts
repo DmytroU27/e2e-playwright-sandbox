@@ -1,10 +1,7 @@
-import { PageHolder } from "../pages/page-abstract";
+import { PageHolder } from '../pages/page-abstract';
 
 export class BrowserUtils extends PageHolder {
   async injectLogin(token: string): Promise<void> {
-    await this.page.evaluate(
-      (arg) => window.localStorage.setItem("token", arg),
-      token,
-    );
+    await this.page.evaluate((arg) => window.localStorage.setItem('token', arg), token);
   }
 }

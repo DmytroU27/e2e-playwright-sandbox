@@ -1,8 +1,8 @@
-import { PageHolder } from "./page-abstract";
-import { SignUp } from "./sign-up";
-import { BasePage, HomePage } from "./base-page";
-import { SignIn } from "./sign-in";
-import { Dashboard } from "./dashboard";
+import { PageHolder } from './page-abstract';
+import { SignUp } from './sign-up';
+import { BasePage, HomePage } from './base-page';
+import { SignIn } from './sign-in';
+import { Dashboard } from './dashboard';
 
 export class Application extends PageHolder {
   private basePage = new BasePage(this.page);

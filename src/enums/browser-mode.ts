@@ -1,4 +1,4 @@
 export enum Mode {
-    MOBILE = "Mobile",
-    DESKTOP = "Desktop",
+  MOBILE = 'Mobile',
+  DESKTOP = 'Desktop',
 }
